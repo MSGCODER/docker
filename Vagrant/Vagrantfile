@@ -1,0 +1,101 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.define "master-1" do |m1|
+    m1.vm.box = "CentOS-7.2"
+    # m1.vm.hostname = "master-1"
+    m1.vm.network "public_network", ip: "192.168.0.11"
+    m1.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
+    m1.vm.synced_folder "/data/master-1", "/data"
+    m1.vm.provision "shell" do |s|
+      s.path = "onstart.sh"
+      s.args = ["master-1"]
+    end
+  end
+  
+  config.vm.define "master-2" do |m2|
+    m2.vm.box = "CentOS-7.2"
+    # m2.vm.hostname = "master-2"
+    m2.vm.network "public_network", ip: "192.168.0.12"
+    m2.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
+    m2.vm.synced_folder "/data/master-2", "/data"
+    m2.vm.provision "shell" do |s|
+      s.path = "onstart.sh"
+      s.args = ["master-2"]
+    end
+  end
+
+  config.vm.define "master-3" do |m3|
+    m3.vm.box = "CentOS-7.2"
+    # m3.vm.hostname = "master-3"
+    m3.vm.network "public_network", ip: "192.168.0.13"
+    m3.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
+    m3.vm.synced_folder "/data/master-3", "/data"
+    m3.vm.provision "shell" do |s|
+      s.path = "onstart.sh"
+      s.args = ["master-3"]
+    end
+  end
+
+  config.vm.define "worker-1" do |w1|
+    w1.vm.box = "CentOS-7.2"
+    # w1.vm.hostname = "worker-1"
+    w1.vm.network "public_network", ip: "192.168.0.21"
+    w1.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
+    w1.vm.synced_folder "/data/worker-1", "/data"
+    w1.vm.provision "shell" do |s|
+      s.path = "onstart.sh"
+      s.args = ["worker-1"]
+    end
+  end
+
+  config.vm.define "worker-2" do |w2|
+    w2.vm.box = "CentOS-7.2"
+    # w2.vm.hostname = "worker-2"
+    w2.vm.network "public_network", ip: "192.168.0.22"
+    w2.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
+    w2.vm.synced_folder "/data/worker-2", "/data"
+    w2.vm.provision "shell" do |s|
+      s.path = "onstart.sh"
+      s.args = ["worker-2"]
+    end
+  end
+
+  config.vm.define "worker-3" do |w3|
+    w3.vm.box = "CentOS-7.2"
+    # w3.vm.hostname = "worker-3"
+    w3.vm.network "public_network", ip: "192.168.0.23"
+    w3.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
+    w3.vm.synced_folder "/data/worker-3", "/data"
+    w3.vm.provision "shell" do |s|
+      s.path = "onstart.sh"
+      s.args = ["worker-3"]
+    end
+  end
+
+  config.vm.define "worker-4" do |w4|
+    w4.vm.box = "CentOS-7.2"
+    # w4.vm.hostname = "worker-4"
+    w4.vm.network "public_network", ip: "192.168.0.24"
+    w4.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
+    w4.vm.synced_folder "/data/worker-4", "/data"
+    w4.vm.provision "shell" do |s|
+      s.path = "onstart.sh"
+      s.args = ["worker-4"]
+    end
+  end
+
+end
